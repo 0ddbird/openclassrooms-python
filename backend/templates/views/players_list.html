@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Player List</title>
-  </head>
-  <body>
-    <h1>Player List</h1>
+{% extends "./views/base.html" %}
+
+{% block title %}Players List{% endblock %}
+
+{% block content %}
+<h1>Player List</h1>
     <table>
     <thead>
         <tr>
@@ -29,6 +28,4 @@
         {% endfor %}
     </tbody>
 </table>
-
-  </body>
-</html>
+{% endblock %}
