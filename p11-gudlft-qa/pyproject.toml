@@ -1,0 +1,49 @@
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | build
+  | dist
+  | venv
+)/
+'''
+
+[tool.ruff]
+exclude = [
+    ".direnv",
+    ".git",
+    ".gitignore",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+
+[tool.isort]
+lines_between_sections = 1
+skip_glob = [
+    ".direnv",
+    ".git",
+    ".gitignore",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "migrations"
+]
+sections = ['FUTURE', 'STDLIB', 'THIRDPARTY', 'FLASK', 'FIRSTPARTY', 'LOCALFOLDER']
+known_flask = "flask"

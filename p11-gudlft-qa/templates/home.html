@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Home || GUDLFT{% endblock %}
+
+{% block content %}
+    <h2>Welcome, {{ club['email'] }} </h2>
+    Points available: {{club['points']}}
+    <h3>Competitions:</h3>
+    <ul>
+        {% for comp in competitions %}
+        <li>
+            {{ comp['name'] }}<br />
+            Date: {{ comp['date'] }}</br>
+            Number of Slots: {{ comp['available_slots'] }}
+            {% if comp['available_slots']|int > 0 and comp['is_active'] == True and club['points']|int > 0 %}
+            <a href="{{ url_for('book_route', competition_name=comp['name'], club_name=club['name']) }}">Book Slots</a>
+            {% endif %}
+        </li>
+        <hr />
+        {% endfor %}
+    </ul>
+{% endblock %}
