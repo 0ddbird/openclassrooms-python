@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Player Report</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='players.css') }}">
+</head>
+<body>
+<h1>Player Report</h1>
+<table>
+    <tr>
+        <th class="chess-id">Chess ID</th>
+        <th class="first-name">First Name</th>
+        <th class="last-name">Last Name</th>
+        <th class="birthdate">Birthdate</th>
+        <th class="elo">ELO</th>
+    </tr>
+    {% for player in players %}
+    <tr>
+        <td class="chess-id">{{ player.chess_id }}</td>
+        <td class="first-name">{{ player.first_name }}</td>
+        <td class="last-name">{{ player.last_name }}</td>
+        <td class="birthdate">{{ player.birthdate|datetime_format }}</td>
+        <td class="elo">{{ player.elo }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

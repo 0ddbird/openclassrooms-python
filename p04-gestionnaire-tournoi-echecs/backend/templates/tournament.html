@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tournament Report</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tournament.css') }}">
+</head>
+<body>
+<h1 class="tournament-name">Tournament: {{ tournament.name }}</h1>
+<p>Start date: {{ tournament.start_datetime|datetime_format }}</p>
+{% if tournament.end_datetime %}
+<p>End date: {{ tournament.end_datetime|datetime_format }}</p>
+{% else %}
+<p>End date: N/A</p>
+{% endif %}
+
+{% if tournament.players|length > 0 %}
+<h2 class="section-heading">Players:</h2>
+<table class="player-list">
+    <tr>
+        <th>Name</th>
+        <th>Chess ID</th>
+        <th>Elo</th>
+    </tr>
+    {% for player in tournament.players|sort(attribute='last_name') %}
+    <tr class="player-item">
+        <td>{{ player.first_name }} {{ player.last_name }}</td>
+        <td>{{ player.chess_id }}</td>
+        <td>{{ player.elo }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+{% if tournament.rounds|length > 0 %}
+<h2 class="section-heading">Rounds:</h2>
+<ul class="round-list">
+    {% for round in tournament.rounds %}
+    <li class="round-item">
+        <p class="round-number">Round number: {{ round.round_number }}</p>
+        <p>Status: {{ round.status }}</p>
+        <p>Start date: {{ round.start_datetime|datetime_format }}</p>
+
+        {% if round.end_datetime %}
+        <p>End date: {{ round.end_datetime|datetime_format }}</p>
+        {% else %}
+        <p>End date: N/A</p>
+        {% endif %}
+
+
+        {% if round.games %}
+        <h3 class="sub-heading">Games:</h3>
+        <ul class="game-list">
+            {% for game in round.games %}
+            <li class="game-item">
+                <p>Game ID: {{ game.id }}</p>
+                <p>
+                    Player 1: {{ game.p1_id }}:
+                    {% if game.p1_score == 1.0 %}WON
+                    {% elif game.p1_score == 0.0 %}LOST
+                    {% elif game.p1_score == 0.5 %}TIE
+                    {% endif %}
+                </p>
+                <p>
+                    Player 2: {{ game.p2_id }}: {% if game.p2_score == 1.0 %}WON
+                    {% elif game.p2_score == 0.0 %}LOST
+                    {% elif game.p2_score == 0.5 %}TIE
+                    {% endif %}
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+</body>
+</html>
