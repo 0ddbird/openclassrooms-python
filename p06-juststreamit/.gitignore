@@ -1,0 +1,6 @@
+temp/
+backend/
+venv/
+node_modules/
+.idea/
+*.sqlite3
