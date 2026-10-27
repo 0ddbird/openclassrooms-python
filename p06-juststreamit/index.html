@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Just Stream It</title>
+    <link rel="icon" type="image/x-icon" href="frontend/assets/favicon.png">
+    <link rel="stylesheet" type="text/css" href="frontend/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Nunito+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script src="frontend/dist/index.js" type="module" defer></script>
+</head>
+<body>
+<div id="observer_anchor"></div>
+<header class="gradient">
+    <div id="logo_container">
+        <div id="logo_elements">
+            <img id="logo_el_1" src="frontend/assets/logo/Logo_el_1.svg" alt="">
+            <img id="logo_el_2" src="frontend/assets/logo/Logo_el_2.svg" alt="">
+            <img id="logo_el_3" src="frontend/assets/logo/Logo_el_3.svg" alt="">
+            <img id="logo_el_4" src="frontend/assets/logo/Logo_el_4.svg" alt="">
+        </div>
+        <h1>JUST STREAM IT</h1>
+    </div>
+    <nav>
+        <a href="#">Accueil</a>
+        <a href="#">Catégories</a>
+    </nav>
+</header>
+<section id="hero">
+    <div id="hero_cover_container">
+        <img id="hero_cover" src="frontend/assets/covers/hero/hopeful_notes.jpg" alt="hero cover"/>
+    </div>
+    <div id="hero_panel">
+        <p id="hero_description">A young violinist with leukemia brings hope and life into a desolate Russian hospital for children.</p>
+        <div id="hero_controls">
+            <button id="hero_play_btn" class="hero_btn">
+                <img class="btn_icon" src="frontend/assets/icons/icon_play.svg" alt="play">
+                Regarder
+            </button>
+            <button id="hero_info_btn" class="hero_btn">
+                <img class="btn_icon" src="frontend/assets/icons/icon_info.svg" alt="info">
+                Infos
+            </button>
+        </div>
+    </div>
+</section>
+<div id="categories"></div>
+<footer>
+    <div class="social_links">
+        <a class="social_icon_container" href="#">
+            <img class="social_icon" src="frontend/assets/icons/Facebook.svg" alt="facebook"/>
+        </a>
+        <a class="social_icon_container" href="#">
+            <img class="social_icon" src="frontend/assets/icons/Instagram.svg" alt="instagram"/>
+        </a>
+        <a class="social_icon_container" href="#">
+            <img class="social_icon" src="frontend/assets/icons/Twitter.svg" alt="twitter"/>
+        </a>
+        <a class="social_icon_container" href="#">
+            <img class="social_icon" src="frontend/assets/icons/YouTube.svg" alt="youtube"/>
+        </a>
+    </div>
+    <div id="seo_tag_container">
+        <ul class="seo_tags">
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+        </ul>
+        <ul class="seo_tags">
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+        </ul>
+        <ul class="seo_tags">
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+        </ul>
+        <ul class="seo_tags">
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+            <li><a href="#">Lorem ipsum</a></li>
+        </ul>
+    </div>
+</footer>
+<template id="template_category">
+    <section class="category">
+        <h1 class="category_title"></h1>
+        <button class="arrow-button previous">
+            <img src="frontend/assets/icons/chevron-left.svg" alt="previous"/>
+        </button>
+        <div class="movies_container"></div>
+        <button class="arrow-button next">
+            <img src="frontend/assets/icons/chevron-right.svg" alt="next"/>
+        </button>
+    </section>
+</template>
+<template id="template_movie">
+    <article class="movie" data-id="">
+        <img src="" class="movie_thumbnail" alt=""/>
+<!--        <img src="./frontend/assets/covers/default_cover.png" class="movie_background" alt="background"/>-->
+        <div class="movie_info">
+            <button class="info-btn">
+                <img class="btn_icon" src="frontend/assets/icons/icon_info.svg" alt="info">
+                <img class="btn_icon_hover" src="frontend/assets/icons/hover.svg" alt="hover effect"/>
+            </button>
+        </div>
+    </article>
+</template>
+<template id="template_modal">
+    <div id="modal-background" class="hidden">
+        <div id="modal_wrapper">
+            <button id="modal_close-btn">
+                <img src="frontend/assets/icons/xmark.svg" alt="close"/>
+            </button>
+            <section id="modal_content">
+                <div id="modal_movie_picture_container">
+                    <img id="modal_movie_picture" src="frontend/assets/covers/SF/empire_sb.jpg" alt="default cover"/>
+                </div>
+                <h1 id="modal_movie_title"></h1>
+                <div class="modal_row" id="modal_genre">
+                    <span class="modal_row_title">Genre</span>
+                    <span id="modal_genre_content"></span>
+                </div>
+                <div class="modal_row" id="modal_release">
+                    <span class="modal_row_title">Date de sortie</span>
+                    <span id="modal_release_content"></span>
+                </div>
+                <div class="modal_row" id="modal_rating">
+                    <span class="modal_row_title"> Public</span>
+                    <span id="modal_rating_content"></span>
+                </div>
+                <div class="modal_row" id="modal_imdb">
+                    <span class="modal_row_title">Score IMDB</span>
+                    <span id="modal_imdb_content"></span>
+                </div>
+                <div class="modal_row" id="modal_director">
+                    <span class="modal_row_title">Réalisateur</span>
+                    <span id="modal_director_content"></span>
+                </div>
+                <div class="modal_row" id="modal_casting">
+                    <span class="modal_row_title">Acteurs</span>
+                    <span id="modal_casting_content"></span>
+                </div>
+                <div class="modal_row" id="modal_duration">
+                    <span class="modal_row_title">Durée</span>
+                    <span id="modal_duration_content"></span>
+                </div>
+                <div class="modal_row" id="modal_country">
+                    <span class="modal_row_title">Pays d'origine</span>
+                    <span id="modal_country_content"></span>
+                </div>
+                <div class="modal_row" id="modal_box-office">
+                    <span class="modal_row_title">Résultat au Box Office</span>
+                    <span id="modal_box-office_content"></span>
+                </div>
+                <div class="modal_row" id="modal_synopsis">
+                    <span class="modal_row_title">Résumé</span>
+                    <span id="modal_synopsis_content"></span>
+                </div>
+            </section>
+        </div>
+    </div>
+</template>
+</body>
+</html>
