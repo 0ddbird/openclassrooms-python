@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static tailwind_tags %}
+
+<html lang="en">
+<head>
+    <title>LitRevu</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet">
+    {% tailwind_css %}
+</head>
+<body class="font-roboto bg-gray-100">
+    {% include '../components/nav.html' %}
+    {% include '../components/messages_banner.html' %}
+    <div class="container mx-auto mt-8 p-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
