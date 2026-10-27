@@ -1,0 +1,52 @@
+@use '../abstract' as a;
+
+#tournaments_page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  & h1 {
+    margin-bottom: 1em;
+  }
+}
+
+.tournaments_table_header {
+  display: grid;
+  grid-template-columns: .5fr repeat(8, 1fr);
+  gap: 0 1em;
+}
+
+.tournaments_table_header_item {
+  font-weight: 700;
+  color: a.$clr-main;
+}
+
+.tournament_row {
+  display: grid;
+  grid-template-columns: .5fr repeat(8, 1fr);
+  gap: 0 1em;
+}
+
+#tournament_start_button {
+  background-color: a.$clr-main;
+  color: black;
+  font-weight: 700;
+}
+
+#leaderboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  background-color: rgba(255, 255, 255, .10);
+  backdrop-filter: blur(5px);
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.player_row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

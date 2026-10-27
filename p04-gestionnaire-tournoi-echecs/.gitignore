@@ -1,0 +1,6 @@
+.project/
+__pycache__/
+*.pyc
+.env
+.idea/
+web_client/build/
