@@ -1,0 +1,20 @@
+{% load filters %}
+
+<div class="max-w-md mx-auto bg-white rounded-lg border border-gray-200 shadow-md overflow-hidden md:max-w-2xl my-4">
+    <div class="p-5">
+
+        <h3 class="text-gray-900 font-semibold text-lg mt-1">{{ review.headline }}
+            <span class="inline-block ml-2">
+                {% for star in review.rating|range %}
+                    <span class="text-amber-500">&#9733;</span>
+                {% endfor %}
+            </span>
+        </h3>
+        <span class="text-sm text-gray-900 italic"> "{{ review.ticket_title }}" reviewed by {{ review.review_username }} for {{ review.ticket_username }}. {{review.time_created}}</span>
+        <p class="text-gray-900 mt-2">{{ review.body }}</p>
+        {% if review.is_editable %}
+        <a href="{% url 'update_review' ticket_id=review.ticket_id review_id=review.id %}" class="text-sky-600 hover:text-sky-900 underline">Edit Review</a>
+        {% endif %}
+
+    </div>
+</div>
