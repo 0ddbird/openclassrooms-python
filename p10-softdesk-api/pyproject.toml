@@ -1,0 +1,77 @@
+[tool.poetry]
+name = "oc-python-p10"
+version = "0.1.0"
+description = ""
+authors = ["0ddbird <0ddbird@proton.me>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+# python = "^3.10"
+python = '3.10.12'
+django = "^5.0.1"
+djangorestframework = "^3.14.0"
+djangorestframework-simplejwt = "^5.3.1"
+django-cors-headers = "^4.3.1"
+drf-spectacular = "^0.27.1"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.1"
+ruff = "^0.2.1"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | build
+  | dist
+  | migrations
+)/
+'''
+
+[tool.ruff]
+exclude = [
+    ".direnv",
+    ".git",
+    ".gitignore",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "migrations"
+]
+
+[tool.isort]
+lines_between_sections = 1
+skip = ["migrations"]
+skip_glob = [
+    ".direnv",
+    ".git",
+    ".gitignore",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "migrations"
+]
+sections = ['FUTURE', 'STDLIB', 'THIRDPARTY', 'DJANGO', 'FIRSTPARTY', 'LOCALFOLDER']
+known_django = "django"

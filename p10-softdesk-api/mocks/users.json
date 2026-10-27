@@ -1,0 +1,27 @@
+[
+    {
+      "username": "User1",
+      "email": "user1@example.com",
+      "password":"pwd1234",
+      "can_be_contacted": true,
+      "can_data_be_shared": false,
+      "birthdate": "1985-05-15"
+    },
+    {
+      "username": "User2",
+      "email": "user2@example.com",
+      "password":"U2pwd1234",
+      "can_be_contacted": true,
+      "can_data_be_shared": false,
+      "birthdate": "1985-05-15"
+    },
+    {
+      "username": "User3",
+      "email": "user3@example.com",
+      "password":"pwd1234",
+      "can_be_contacted": false,
+      "can_data_be_shared": true,
+      "birthdate": "1987-11-10"
+    }
+  ]
+  
